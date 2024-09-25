@@ -1,0 +1,34 @@
+name: Java and Python Dependencies Workflow
+
+on: 
+  push:
+  pull_request:
+
+jobs:
+  java-python-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository content
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name: Install Python dependencies
+        run: |
+          echo "Installing Python dependencies..."
+          pip install -r requirements.txt
+
+      - name: Compile and Run Java Program
+        run: |
+          echo "Compiling and running Java program..."
+          javac BonjourMonde.java
+          java BonjourMonde
+
+      - name: Verify Python installations
+        run: |
+          echo "Verifying Python libraries..."
+          python -c "import pandas; import flask; import sklearn; print('All libraries imported successfully!')"
