@@ -1,0 +1,15 @@
+name: Display Requirements Test
+on: [push]
+
+jobs:
+  display-requirements:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository content
+        uses: actions/checkout@v3
+
+      - name: Display requirements.txt content
+        run: |
+          echo "📦 Dependencies listed in requirements.txt:"
+          cat requirements.txt
