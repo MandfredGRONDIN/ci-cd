@@ -19,4 +19,5 @@ jobs:
         run: pip install -r requirements.txt || true
 
       - name: Run tests
-        run: python -m unittest discover
+        run: python -m unittest discover -s . -p "test-inc-dec.py"
+
